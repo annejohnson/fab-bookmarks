@@ -1,17 +1,27 @@
 var bookmarksDatabase = new Firebase('https://fab-bookmarks.firebaseio.com/bookmarks');
+var formStyles = { marginTop: '20px' };
+var formButtonStyles = { marginBottom: '0' };
 var AppContainer = React.createClass({
   mixins: [ReactFireMixin],
   getInitialState: function() {
-    return { bookmarks: [] };
+    return { bookmarks: [], authData: null };
   },
   componentWillMount: function() {
     this.bindAsArray(bookmarksDatabase, 'bookmarks');
+    bookmarksDatabase.onAuth(function(authData) {
+      this.setState({ bookmarks: this.state.bookmarks, authData: authData });
+    }.bind(this));
   },
   render: function() {
+    var form = this.state.authData ? (
+      <BookmarkForm />
+    ) : (
+      <LoginForm />
+    );
     return (
       <div className="appContainer">
         <BookmarkList bookmarks={this.state.bookmarks} />
-        <BookmarkForm />
+        {form}
       </div>
     );
   }
@@ -27,6 +37,42 @@ var BookmarkList = React.createClass({
       <div className="bookmarkList">
         {bookmarkNodes}
       </div>
+    );
+  }
+});
+var LoginForm = React.createClass({
+  componentDidMount: function() {
+    this.refs.email.getDOMNode().value = '';
+    this.refs.password.getDOMNode().value = '';
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var email = this.refs.email.getDOMNode().value.trim();
+    var password = this.refs.password.getDOMNode().value.trim();
+    bookmarksDatabase.authWithPassword(
+      { email: email, password: password },
+      function(error) {
+        if (error) console.log(error);
+      }
+    );
+  },
+  render: function() {
+    return (
+      <form className="loginForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
+        <div className="row">
+          <div className="small-6 columns">
+            <input type="text" placeholder="Email" ref="email" />
+          </div>
+          <div className="small-6 columns">
+            <input type="password" placeholder="Password" ref="password" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="small-12 columns small-text-center">
+            <input type="submit" value="Login" className="button small" style={formButtonStyles} />
+          </div>
+        </div>
+      </form>
     );
   }
 });
@@ -51,8 +97,6 @@ var BookmarkForm = React.createClass({
     this.refs.url.getDOMNode().value = 'http://';
   },
   render: function() {
-    var buttonStyles = { marginBottom: '0' };
-    var formStyles = { marginTop: '20px' };
     return (
       <form className="bookmarkForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
         <div className="row">
@@ -70,7 +114,7 @@ var BookmarkForm = React.createClass({
         </div>
         <div className="row">
           <div className="small-12 columns small-text-center">
-            <input type="submit" value="Add Bookmark" className="button small" style={buttonStyles} />
+            <input type="submit" value="Add Bookmark" className="button small" style={formButtonStyles} />
           </div>
         </div>
       </form>
