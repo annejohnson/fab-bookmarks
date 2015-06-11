@@ -1,6 +1,8 @@
 var bookmarksDatabase = new Firebase('https://fab-bookmarks.firebaseio.com/bookmarks');
 var formStyles = { marginTop: '20px' };
 var formButtonStyles = { marginBottom: '0' };
+var formErrorStyles = { padding: '0.4rem' };
+var formHeaderStyles = { marginBottom: '15px' };
 var AppContainer = React.createClass({
   mixins: [ReactFireMixin],
   getInitialState: function() {
@@ -60,20 +62,22 @@ var LoginForm = React.createClass({
     );
   },
   render: function() {
+    var errorNotification = this.state.error ? (
+      <div className="alert-box alert" style={formErrorStyles}>{this.state.error}</div>
+    ) : "";
     return (
       <form className="loginForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
+        <h5 className="text-center" style={formHeaderStyles}>Hello, guest! Please log in to edit bookmarks:</h5>
+        {errorNotification}
         <div className="row">
-          <div className="small-6 columns">
+          <div className="small-12 columns">
             <input type="text" placeholder="Email" ref="email" />
           </div>
-          <div className="small-6 columns">
+          <div className="small-12 columns">
             <input type="password" placeholder="Password" ref="password" />
           </div>
-        </div>
-        {this.state.error}
-        <div className="row">
           <div className="small-12 columns small-text-center">
-            <input type="submit" value="Login" className="button small" style={formButtonStyles} />
+            <input type="submit" value="Log In" className="button small" style={formButtonStyles} />
           </div>
         </div>
       </form>
@@ -103,6 +107,7 @@ var BookmarkForm = React.createClass({
   render: function() {
     return (
       <form className="bookmarkForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
+        <h5 className="text-center" style={formHeaderStyles}>Add a New Bookmark:</h5>
         <div className="row">
           <div className="small-6 columns">
             <input type="text" placeholder="Title" ref="title" />
