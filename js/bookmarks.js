@@ -41,6 +41,9 @@ var BookmarkList = React.createClass({
   }
 });
 var LoginForm = React.createClass({
+  getInitialState: function() {
+    return { error: null };
+  },
   componentDidMount: function() {
     this.refs.email.getDOMNode().value = '';
     this.refs.password.getDOMNode().value = '';
@@ -52,8 +55,8 @@ var LoginForm = React.createClass({
     bookmarksDatabase.authWithPassword(
       { email: email, password: password },
       function(error) {
-        if (error) console.log(error);
-      }
+        this.setState({ error: error ? error.message : null });
+      }.bind(this)
     );
   },
   render: function() {
@@ -67,6 +70,7 @@ var LoginForm = React.createClass({
             <input type="password" placeholder="Password" ref="password" />
           </div>
         </div>
+        {this.state.error}
         <div className="row">
           <div className="small-12 columns small-text-center">
             <input type="submit" value="Login" className="button small" style={formButtonStyles} />
