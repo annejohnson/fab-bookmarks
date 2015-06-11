@@ -9,7 +9,7 @@ var AppContainer = React.createClass({
   },
   render: function() {
     return (
-      <div class="appContainer">
+      <div className="appContainer">
         <BookmarkList bookmarks={this.state.bookmarks} />
         <BookmarkForm />
       </div>
@@ -24,7 +24,7 @@ var BookmarkList = React.createClass({
       );
     });
     return (
-      <div class="bookmarkList">
+      <div className="bookmarkList">
         {bookmarkNodes}
       </div>
     );
@@ -51,12 +51,28 @@ var BookmarkForm = React.createClass({
     this.refs.url.getDOMNode().value = 'http://';
   },
   render: function() {
+    var buttonStyles = { marginBottom: '0' };
+    var formStyles = { marginTop: '20px' };
     return (
-      <form class="bookmarkForm" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Title" ref="title" />
-        <input type="text" placeholder="URL" ref="url" />
-        <input type="text" placeholder="Categories (comma-separated)" ref="categories" />
-        <input type="submit" value="Add Bookmark" />
+      <form className="bookmarkForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
+        <div className="row">
+          <div className="small-6 columns">
+            <input type="text" placeholder="Title" ref="title" />
+          </div>
+          <div className="small-6 columns">
+            <input type="text" placeholder="Categories (comma-separated)" ref="categories" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="small-12 columns">
+            <input type="text" placeholder="URL" ref="url" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="small-12 columns small-text-center">
+            <input type="submit" value="Add Bookmark" className="button small" style={buttonStyles} />
+          </div>
+        </div>
       </form>
     );
   }
@@ -64,15 +80,16 @@ var BookmarkForm = React.createClass({
 var Bookmark = React.createClass({
   render: function() {
     var categoryNodes = (this.props.categories || []).map(function(category) {
+      var categoryStyles = { marginLeft: '5px' };
       return (
-        <div class="bookmarkCategory">{category}</div>
+        <span className="bookmarkCategory label" style={categoryStyles}>{category}</span>
       );
     });
     return (
-      <div class="bookmark">
+      <div className="bookmark">
         <strong>{this.props.title}: </strong>
         <a href={this.props.url} target="_blank">{this.props.url}</a>
-        <div class="bookmarkCategories">
+        <div className="bookmarkCategories">
           {categoryNodes}
         </div>
       </div>
