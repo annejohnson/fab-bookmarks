@@ -13,6 +13,7 @@ var Bookmark = React.createClass({
         <div className="bookmarkCategories">
           {categoryNodes}
         </div>
+        <BookmarkDeleteButton uid={this.props.uid} />
       </div>
     );
   }
