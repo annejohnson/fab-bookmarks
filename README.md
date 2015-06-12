@@ -8,7 +8,6 @@ Built with React and Firebase.
 
 ### TODOs
 
-- Delete bookmarks
 - Edit bookmarks
 - Each user gets separate bookmark storage by uid
 - Filter bookmarks by category
