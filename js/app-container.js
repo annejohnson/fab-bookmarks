@@ -3,6 +3,16 @@ var formStyles = { marginTop: '20px' };
 var formButtonStyles = { marginBottom: '0' };
 var formErrorStyles = { padding: '0.4rem' };
 var formHeaderStyles = { marginBottom: '15px' };
+var validUrl = function(url) {
+  return url.match(/https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}/);
+};
+var getBookmarkError = function(title, url) {
+   if (!title)
+     return "Title must not be blank";
+   if (!validUrl(url))
+     return "URL is invalid";
+   return null;
+};
 
 var AppContainer = React.createClass({
   mixins: [ReactFireMixin],
@@ -18,7 +28,7 @@ var AppContainer = React.createClass({
   },
   render: function() {
     var form = this.state.authData ? (
-      <BookmarkForm />
+      <NewBookmarkForm />
     ) : (
       <LoginForm />
     );

@@ -1,4 +1,4 @@
-var BookmarkForm = React.createClass({
+var NewBookmarkForm = React.createClass({
   getInitialState: function() {
     return { error: null };
   },
@@ -7,19 +7,6 @@ var BookmarkForm = React.createClass({
     this.refs.categories.getDOMNode().value = '';
     this.refs.url.getDOMNode().value = 'http://';
   },
-  validUrl: function(url) {
-    return url.match(/https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}/);
-  },
-  hasErrorState: function(title, url) {
-    if (!title || !this.validUrl(url)) {
-      this.setState({
-        error: (!title ? "Title must not be blank" : "URL is invalid")
-      });
-      return true;
-    }
-    this.setState({ error: null });
-    return false;
-  },
   handleSubmit: function(e) {
     e.preventDefault();
     var title = this.refs.title.getDOMNode().value.trim();
@@ -27,7 +14,9 @@ var BookmarkForm = React.createClass({
     var categories = this.refs.categories.getDOMNode().value.split(",").map(function(category) {
       return category.trim();
     }).filter(function(category) { return category; });
-    if (this.hasErrorState(title, url))
+    var bookmarkError = getBookmarkError(title, url);
+    this.setState({ error: bookmarkError });
+    if (bookmarkError)
       return;
     bookmarksDatabase.push({ title: title, url: url, categories: categories });
     this.refs.title.getDOMNode().value = '';
