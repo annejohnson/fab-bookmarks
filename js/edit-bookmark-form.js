@@ -20,8 +20,7 @@ var EditBookmarkForm = React.createClass({
     this.setState({ error: bookmarkError });
     if (bookmarkError)
       return;
-    bookmarksDatabase.child(this.props.uid).set({ title: title, url: url, categories: categories });
-    // TODO fire a callback to update parent's state to { editing: false }
+    bookmarksDatabase.child(this.props.uid).set({ title: title, url: url, categories: categories }, this.props.saveCallback);
   },
   render: function() {
     var errorNotification = this.state.error ? (
@@ -29,7 +28,7 @@ var EditBookmarkForm = React.createClass({
     ) : "";
     return (
       <form className="bookmarkForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="text-center" style={formHeaderStyles}>Add a New Bookmark:</h5>
+        <h5 className="text-center" style={formHeaderStyles}>Edit Bookmark:</h5>
         {errorNotification}
         <div className="row">
           <div className="small-6 columns">

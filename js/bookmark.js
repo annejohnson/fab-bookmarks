@@ -14,6 +14,7 @@ var Bookmark = React.createClass({
           {categoryNodes}
         </div>
         <BookmarkDeleteButton uid={this.props.uid} />
+        <div className="button tiny" onClick={this.props.editCallback}>Edit</div>
       </div>
     );
   }
