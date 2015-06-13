@@ -41,7 +41,7 @@ var AppContainer = React.createClass({
     }.bind(this));
     return (
       <div className="appContainer">
-        <BookmarkList bookmarks={bookmarks} />
+        <BookmarkList bookmarks={bookmarks} authData={this.state.authData} />
         {form}
       </div>
     );
