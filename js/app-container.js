@@ -20,15 +20,16 @@ var AppContainer = React.createClass({
     return { bookmarksByKey: {}, authData: null };
   },
   componentWillMount: function() {
-    this.bindAsArray(bookmarksDatabase, 'bookmarks');
-    this.bindAsObject(bookmarksDatabase, 'bookmarksByKey');
     bookmarksDatabase.onAuth(function(authData) {
-      this.setState({ bookmarks: this.state.bookmarks, authData: authData });
+      if (authData) {
+        this.bindAsObject(bookmarksDatabase.child(authData.uid), 'bookmarksByKey');
+        this.setState({ bookmarksByKey: this.state.bookmarksByKey, authData: authData });
+      }
     }.bind(this));
   },
   render: function() {
     var form = this.state.authData ? (
-      <NewBookmarkForm />
+      <NewBookmarkForm authData={this.state.authData} />
     ) : (
       <LoginForm />
     );

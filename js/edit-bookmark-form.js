@@ -20,7 +20,7 @@ var EditBookmarkForm = React.createClass({
     this.setState({ error: bookmarkError });
     if (bookmarkError)
       return;
-    bookmarksDatabase.child(this.props.uid).set({ title: title, url: url, categories: categories }, this.props.saveCallback);
+    bookmarksDatabase.child(this.props.authData.uid).child(this.props.uid).set({ title: title, url: url, categories: categories }, this.props.saveCallback);
   },
   render: function() {
     var errorNotification = this.state.error ? (

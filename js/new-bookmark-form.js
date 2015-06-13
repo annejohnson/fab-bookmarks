@@ -18,7 +18,7 @@ var NewBookmarkForm = React.createClass({
     this.setState({ error: bookmarkError });
     if (bookmarkError)
       return;
-    bookmarksDatabase.push({ title: title, url: url, categories: categories });
+    bookmarksDatabase.child(this.props.authData.uid).push({ title: title, url: url, categories: categories });
     this.refs.title.getDOMNode().value = '';
     this.refs.categories.getDOMNode().value = '';
     this.refs.url.getDOMNode().value = 'http://';

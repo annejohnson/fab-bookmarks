@@ -8,7 +8,7 @@ var Bookmark = React.createClass({
     });
     var editButtons = (
       <div className="small-12 medium-2 columns">
-        <BookmarkDeleteButton uid={this.props.uid} />
+        <BookmarkDeleteButton uid={this.props.uid} authData={this.props.authData} />
         <div className="button tiny" onClick={this.props.editCallback}>Edit</div>
       </div>
     );

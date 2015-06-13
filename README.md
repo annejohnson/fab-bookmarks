@@ -8,7 +8,9 @@ Built with React and Firebase.
 
 ### TODOs
 
-- Each user gets separate bookmark storage by uid
 - Filter bookmarks by category
+- User registration
 - Beautify
+- User logout
+- User password resets
 - Routing for bookmarks by user ID

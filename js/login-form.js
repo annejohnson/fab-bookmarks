@@ -23,7 +23,7 @@ var LoginForm = React.createClass({
     ) : "";
     return (
       <form className="loginForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="text-center" style={formHeaderStyles}>Hello, guest! Please log in to edit bookmarks:</h5>
+        <h5 className="text-center" style={formHeaderStyles}>Hello, guest! Please log in to see your bookmarks:</h5>
         {errorNotification}
         <div className="row">
           <div className="small-12 columns">

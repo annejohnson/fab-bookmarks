@@ -3,7 +3,7 @@ var bookmarkDeleteButtonStyles = {
 };
 var BookmarkDeleteButton = React.createClass({
   handleClick: function() {
-    bookmarksDatabase.child(this.props.uid).remove();
+    bookmarksDatabase.child(this.props.authData.uid).child(this.props.uid).remove();
   },
   render: function() {
     return (
