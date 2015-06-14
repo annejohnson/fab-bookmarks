@@ -31,7 +31,7 @@ var AppContainer = React.createClass({
     var form = this.state.authData ? (
       <NewBookmarkForm authData={this.state.authData} />
     ) : (
-      <LoginForm />
+      <NewSessionForm />
     );
     var bookmarkKeys = this.state ? Object.keys(this.state.bookmarksByKey || {}) : [];
     var bookmarks = bookmarkKeys.map(function(key) {

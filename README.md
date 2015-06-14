@@ -8,8 +8,8 @@ Built with React and Firebase.
 
 ### TODOs
 
-- User registration
 - Beautify
 - User logout
 - User password resets
+- Require user signup password confirmation
 - Routing for bookmarks by user ID
