@@ -8,7 +8,6 @@ Built with React and Firebase.
 
 ### TODOs
 
-- Filter bookmarks by category
 - User registration
 - Beautify
 - User logout

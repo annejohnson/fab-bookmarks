@@ -1,11 +1,10 @@
 var Bookmark = React.createClass({
   render: function() {
     var categoryNodes = (this.props.categories || []).map(function(category) {
-      var categoryStyles = { marginLeft: '5px' };
       return (
-        <span className="bookmarkCategory label" style={categoryStyles}>{category}</span>
+        <Category categoryName={category} handleChooseCategory={this.props.handleChooseCategory} />
       );
-    });
+    }.bind(this));
     var editButtons = (
       <div className="small-12 medium-2 columns">
         <BookmarkDeleteButton uid={this.props.uid} authData={this.props.authData} />

@@ -10,7 +10,7 @@ var BookmarkRow = React.createClass({
       <EditBookmarkForm title={this.props.title} url={this.props.url} categories={this.props.categories} uid={this.props.uid} saveCallback={this.switchState} authData={this.props.authData} />
     );
     var viewBookmarkHtml = (
-      <Bookmark title={this.props.title} url={this.props.url} categories={this.props.categories} uid={this.props.uid} editCallback={this.switchState} authData={this.props.authData} />
+      <Bookmark title={this.props.title} url={this.props.url} categories={this.props.categories} uid={this.props.uid} editCallback={this.switchState} authData={this.props.authData} handleChooseCategory={this.props.handleChooseCategory} />
     );
     return (
       <div className="bookmarkRow">
