@@ -7,7 +7,7 @@ var BookmarkList = React.createClass({
   },
   render: function() {
     var showAllCategoriesHtml = this.state.categoryFilter ? (
-      <a href="javascript:void(0)" onClick={this.setCategoryFilter}>Show All Categories</a>
+      <a href="javascript:void(0)" onClick={this.setCategoryFilter} className="waves-effect waves-light btn">Show All Categories</a>
     ) : "";
     var bookmarksHtml = this.props.bookmarks.filter(function(bookmark) {
       return (!this.state.categoryFilter ||
@@ -18,11 +18,9 @@ var BookmarkList = React.createClass({
       );
     }.bind(this));
     return (
-      <div>
-        {showAllCategoriesHtml}
-        <div className="bookmarkList">
-          {bookmarksHtml}
-        </div>
+      <div className="collection with-header">
+        <div className="collection-header"><h4>Bookmarks</h4>{showAllCategoriesHtml}</div>
+        {bookmarksHtml}
       </div>
     );
   }

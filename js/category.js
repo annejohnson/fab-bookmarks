@@ -5,7 +5,7 @@ var Category = React.createClass({
   render: function() {
     var categoryStyles = { marginLeft: '5px' };
     return (
-      <span className="bookmarkCategory btn-floating btn-large waves-effect waves-light red" style={categoryStyles} onClick={this.handleChooseCategory}>{this.props.categoryName}</span>
+      <a href="javascript:void(0)" className="waves-effect waves-light btn" style={categoryStyles} onClick={this.handleChooseCategory}>{this.props.categoryName}</a>
     );
   }
 });
