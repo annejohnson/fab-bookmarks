@@ -18,7 +18,7 @@ var BookmarkList = React.createClass({
       );
     }.bind(this));
     return (
-      <div className="collection with-header">
+      <div className="collection with-header card-panel">
         <div className="collection-header"><h4>Bookmarks</h4>{showAllCategoriesHtml}</div>
         {bookmarksHtml}
       </div>

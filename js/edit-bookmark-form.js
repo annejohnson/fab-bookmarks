@@ -27,7 +27,7 @@ var EditBookmarkForm = React.createClass({
       <ErrorNotification message={this.state.error} />
     ) : "";
     return (
-      <form className="bookmarkForm card-panel s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
+      <form className="bookmarkForm s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
         <h5 className="center-align" style={formHeaderStyles}>Edit Bookmark:</h5>
         {errorNotification}
         <div className="row">
