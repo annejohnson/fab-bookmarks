@@ -46,7 +46,7 @@ var NewBookmarkForm = React.createClass({
         </div>
         <div className="row">
           <div className="s12 col center-align">
-            <input type="submit" value="Add Bookmark" className="waves-effect waves-light btn" style={formButtonStyles} />
+            <button type="submit" className="waves-effect waves-light btn" style={formButtonStyles}>Add Bookmark</button>
           </div>
         </div>
       </form>

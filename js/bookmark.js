@@ -8,7 +8,9 @@ var Bookmark = React.createClass({
     var editButtons = (
       <div className="s12 m2 col">
         <BookmarkDeleteButton uid={this.props.uid} authData={this.props.authData} />
-        <div className="btn-floating btn-large waves-effect waves-light red" onClick={this.props.editCallback}>Edit</div>
+        <a href="javascript:void(0)" className="btn-floating waves-effect waves-light red" onClick={this.props.editCallback}>
+          <i className="mdi-content-create"></i>
+        </a>
       </div>
     );
     return (

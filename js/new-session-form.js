@@ -66,7 +66,7 @@ var NewSessionForm = React.createClass({
             <input type="password" placeholder="Password" ref="password" />
           </div>
           <div className="s12 col center-align">
-            <input type="submit" value={formButtonText} className="waves-effect waves-light btn" />
+            <button type="submit" className="waves-effect waves-light btn">{formButtonText}</button>
           </div>
           <div className="s12 col">
             {switchTypeHtml}
@@ -77,8 +77,8 @@ var NewSessionForm = React.createClass({
     var loginOrSignupHtml = (
       <div>
         <h5>Hello, Guest! Please log in or sign up to continue.</h5>
-        <div className="waves-effect waves-light btn" onClick={this.handleLoginSwitch}>Log In</div>
-        <div className="waves-effect waves-light btn" onClick={this.handleSignupSwitch}>Sign Up</div>
+        <a href="javascript:void(0)" className="waves-effect waves-light btn" onClick={this.handleLoginSwitch}>Log In</a>
+        <a href="javascript:void(0)" className="waves-effect waves-light btn" onClick={this.handleSignupSwitch}>Sign Up</a>
       </div>
     );
     return (

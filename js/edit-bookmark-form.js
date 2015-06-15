@@ -45,7 +45,7 @@ var EditBookmarkForm = React.createClass({
         </div>
         <div className="row">
           <div className="s12 col center-align">
-            <input type="submit" value="Update Bookmark" className="btn-floating btn-large waves-effect waves-light red" style={formButtonStyles} />
+            <button type="submit" className="btn-floating btn-large waves-effect waves-light red" style={formButtonStyles}>Update Bookmark</button>
           </div>
         </div>
       </form>
