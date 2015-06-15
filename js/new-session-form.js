@@ -41,7 +41,7 @@ var NewSessionForm = React.createClass({
   },
   render: function() {
     var errorNotification = this.state.error ? (
-      <div className="alert-box alert" style={formErrorStyles}>{this.state.error}</div>
+      <div className="card-panel" style={formErrorStyles}>{this.state.error}</div>
     ) : "";
     var formHeaderText = this.state.type === 'login' ? "Log In" : "Sign Up";
     var formButtonText = this.state.type === 'login' ? "Log In" : "Sign Up";
@@ -55,20 +55,20 @@ var NewSessionForm = React.createClass({
       </div>
     );
     var formHtml = (
-      <form className="newSessionForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="text-center" style={formHeaderStyles}>{formHeaderText}</h5>
+      <form className="newSessionForm card-panel l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
+        <h5 className="center-align" style={formHeaderStyles}>{formHeaderText}</h5>
         {errorNotification}
         <div className="row">
-          <div className="small-12 columns">
+          <div className="s12 col">
             <input type="text" placeholder="Email" ref="email" />
           </div>
-          <div className="small-12 columns">
+          <div className="s12 col">
             <input type="password" placeholder="Password" ref="password" />
           </div>
-          <div className="small-12 columns small-text-center">
-            <input type="submit" value={formButtonText} className="button small" />
+          <div className="s12 col center-align">
+            <input type="submit" value={formButtonText} className="waves-effect waves-light btn" />
           </div>
-          <div className="small-12 columns">
+          <div className="s12 col">
             {switchTypeHtml}
           </div>
         </div>
@@ -77,8 +77,8 @@ var NewSessionForm = React.createClass({
     var loginOrSignupHtml = (
       <div>
         <h5>Hello, Guest! Please log in or sign up to continue.</h5>
-        <div className="button medium" onClick={this.handleLoginSwitch}>Log In</div>
-        <div className="button medium" onClick={this.handleSignupSwitch}>Sign Up</div>
+        <div className="waves-effect waves-light btn" onClick={this.handleLoginSwitch}>Log In</div>
+        <div className="waves-effect waves-light btn" onClick={this.handleSignupSwitch}>Sign Up</div>
       </div>
     );
     return (

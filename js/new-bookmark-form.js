@@ -25,28 +25,28 @@ var NewBookmarkForm = React.createClass({
   },
   render: function() {
     var errorNotification = this.state.error ? (
-      <div className="alert-box alert" style={formErrorStyles}>{this.state.error}</div>
+      <div className="card-panel" style={formErrorStyles}>{this.state.error}</div>
     ) : "";
     return (
-      <form className="bookmarkForm panel large-10 large-centered columns" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="text-center" style={formHeaderStyles}>Add a New Bookmark:</h5>
+      <form className="bookmarkForm card-panel l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
+        <h5 className="center-align" style={formHeaderStyles}>Add a New Bookmark:</h5>
         {errorNotification}
         <div className="row">
-          <div className="small-6 columns">
+          <div className="s6 col">
             <input type="text" placeholder="Title" ref="title" />
           </div>
-          <div className="small-6 columns">
+          <div className="s6 col">
             <input type="text" placeholder="Categories (comma-separated)" ref="categories" />
           </div>
         </div>
         <div className="row">
-          <div className="small-12 columns">
+          <div className="s12 col">
             <input type="text" placeholder="URL" ref="url" />
           </div>
         </div>
         <div className="row">
-          <div className="small-12 columns small-text-center">
-            <input type="submit" value="Add Bookmark" className="button small" style={formButtonStyles} />
+          <div className="s12 col center-align">
+            <input type="submit" value="Add Bookmark" className="waves-effect waves-light btn" style={formButtonStyles} />
           </div>
         </div>
       </form>

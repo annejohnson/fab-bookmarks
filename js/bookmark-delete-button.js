@@ -7,7 +7,7 @@ var BookmarkDeleteButton = React.createClass({
   },
   render: function() {
     return (
-      <span className="label alert" onClick={this.handleClick} style={bookmarkDeleteButtonStyles}>
+      <span className="btn-floating btn-large waves-effect waves-light red" onClick={this.handleClick} style={bookmarkDeleteButtonStyles}>
         x
       </span>
     );
