@@ -41,7 +41,7 @@ var NewSessionForm = React.createClass({
   },
   render: function() {
     var errorNotification = this.state.error ? (
-      <div className="card-panel" style={formErrorStyles}>{this.state.error}</div>
+      <ErrorNotification message={this.state.error} />
     ) : "";
     var formHeaderText = this.state.type === 'login' ? "Log In" : "Sign Up";
     var formButtonText = this.state.type === 'login' ? "Log In" : "Sign Up";

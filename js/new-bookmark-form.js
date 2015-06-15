@@ -25,7 +25,7 @@ var NewBookmarkForm = React.createClass({
   },
   render: function() {
     var errorNotification = this.state.error ? (
-      <div className="card-panel" style={formErrorStyles}>{this.state.error}</div>
+      <ErrorNotification message={this.state.error} />
     ) : "";
     return (
       <form className="bookmarkForm card-panel s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>

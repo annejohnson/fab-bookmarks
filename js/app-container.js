@@ -1,16 +1,15 @@
 var bookmarksDatabase = new Firebase('https://fab-bookmarks.firebaseio.com/bookmarks');
 var formStyles = { marginTop: '20px' };
 var formButtonStyles = { marginBottom: '0' };
-var formErrorStyles = { padding: '0.4rem' };
 var formHeaderStyles = { marginBottom: '15px' };
 var validUrl = function(url) {
   return url.match(/https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}/);
 };
 var getBookmarkError = function(title, url) {
    if (!title)
-     return "Title must not be blank";
+     return "Title must not be blank.";
    if (!validUrl(url))
-     return "URL is invalid";
+     return "URL is invalid.";
    return null;
 };
 
