@@ -27,25 +27,28 @@ var EditBookmarkForm = React.createClass({
       <div className="card-panel red lighten-2" style={formErrorStyles}>{this.state.error}</div>
     ) : "";
     return (
-      <form className="bookmarkForm card-panel s12 l10 offset-l2 col" onSubmit={this.handleSubmit} style={formStyles}>
+      <form className="bookmarkForm card-panel s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
         <h5 className="center-align" style={formHeaderStyles}>Edit Bookmark:</h5>
         {errorNotification}
         <div className="row">
-          <div className="s6 col">
-            <input type="text" placeholder="Title" ref="title" />
+          <div className="input-field s6 col">
+            <input type="text" ref="title" />
+            <label className="active">Title</label>
           </div>
-          <div className="s6 col">
-            <input type="text" placeholder="Categories (comma-separated)" ref="categories" />
+          <div className="input-field s6 col">
+            <input type="text" ref="categories" />
+            <label className="active">Categories (comma-separated)</label>
           </div>
         </div>
         <div className="row">
-          <div className="s12 col">
-            <input type="text" placeholder="URL" ref="url" />
+          <div className="input-field s12 col">
+            <input type="text" placeholder="http://" ref="url" />
+            <label className="active">URL</label>
           </div>
         </div>
         <div className="row">
           <div className="s12 col center-align">
-            <button type="submit" className="btn-floating btn-large waves-effect waves-light red" style={formButtonStyles}>Update Bookmark</button>
+            <button type="submit" className="waves-effect waves-light btn" style={formButtonStyles}>Update Bookmark</button>
           </div>
         </div>
       </form>

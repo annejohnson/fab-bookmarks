@@ -28,20 +28,23 @@ var NewBookmarkForm = React.createClass({
       <div className="card-panel" style={formErrorStyles}>{this.state.error}</div>
     ) : "";
     return (
-      <form className="bookmarkForm card-panel l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
+      <form className="bookmarkForm card-panel s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
         <h5 className="center-align" style={formHeaderStyles}>Add a New Bookmark:</h5>
         {errorNotification}
         <div className="row">
-          <div className="s6 col">
-            <input type="text" placeholder="Title" ref="title" />
+          <div className="input-field s6 col">
+            <input type="text" id="new-title" ref="title" />
+            <label for="new-title">Title</label>
           </div>
-          <div className="s6 col">
-            <input type="text" placeholder="Categories (comma-separated)" ref="categories" />
+          <div className="input-field s6 col">
+            <input type="text" id="new-categories" ref="categories" />
+            <label for="new-categories">Categories (comma-separated)</label>
           </div>
         </div>
         <div className="row">
-          <div className="s12 col">
-            <input type="text" placeholder="URL" ref="url" />
+          <div className="input-field s12 col">
+            <input type="text" placeholder="http://" id="new-url" ref="url" />
+            <label for="new-url" className="active">URL</label>
           </div>
         </div>
         <div className="row">

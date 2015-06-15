@@ -59,11 +59,13 @@ var NewSessionForm = React.createClass({
         <h5 className="center-align" style={formHeaderStyles}>{formHeaderText}</h5>
         {errorNotification}
         <div className="row">
-          <div className="s12 col">
-            <input type="text" placeholder="Email" ref="email" />
+          <div className="input-field s12 col">
+            <input type="text" id="new-session-email" ref="email" />
+            <label for="new-session-email">Email</label>
           </div>
-          <div className="s12 col">
-            <input type="password" placeholder="Password" ref="password" />
+          <div className="input-field s12 col">
+            <input type="password" id="new-session-password" ref="password" />
+            <label for="new-session-password">Password</label>
           </div>
           <div className="s12 col center-align">
             <button type="submit" className="waves-effect waves-light btn">{formButtonText}</button>
