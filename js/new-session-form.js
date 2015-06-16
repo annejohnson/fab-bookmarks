@@ -55,23 +55,25 @@ var NewSessionForm = React.createClass({
       </div>
     );
     var formHtml = (
-      <form className="newSessionForm card-panel l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="center-align" style={formHeaderStyles}>{formHeaderText}</h5>
-        {errorNotification}
-        <div className="row">
-          <div className="input-field s12 col">
-            <input type="text" id="new-session-email" ref="email" />
-            <label for="new-session-email">Email</label>
-          </div>
-          <div className="input-field s12 col">
-            <input type="password" id="new-session-password" ref="password" />
-            <label for="new-session-password">Password</label>
-          </div>
-          <div className="s12 col center-align">
-            <button type="submit" className="waves-effect waves-light btn">{formButtonText}</button>
-          </div>
-          <div className="s12 col">
-            {switchTypeHtml}
+      <form className="newSessionForm card-panel collection" onSubmit={this.handleSubmit} style={formStyles}>
+        <div className="collection-item">
+          <h5 className="center-align" style={formHeaderStyles}>{formHeaderText}</h5>
+          {errorNotification}
+          <div className="row">
+            <div className="input-field s12 col">
+              <input type="text" id="new-session-email" ref="email" />
+              <label for="new-session-email">Email</label>
+            </div>
+            <div className="input-field s12 col">
+              <input type="password" id="new-session-password" ref="password" />
+              <label for="new-session-password">Password</label>
+            </div>
+            <div className="s12 col center-align">
+              <button type="submit" className="waves-effect waves-light btn">{formButtonText}</button>
+            </div>
+            <div className="s12 col">
+              {switchTypeHtml}
+            </div>
           </div>
         </div>
       </form>

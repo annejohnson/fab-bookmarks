@@ -27,28 +27,30 @@ var EditBookmarkForm = React.createClass({
       <ErrorNotification message={this.state.error} />
     ) : "";
     return (
-      <form className="bookmarkForm s12 l10 offset-l1 col" onSubmit={this.handleSubmit} style={formStyles}>
-        <h5 className="center-align" style={formHeaderStyles}>Edit Bookmark:</h5>
-        {errorNotification}
-        <div className="row">
-          <div className="input-field s6 col">
-            <input type="text" ref="title" />
-            <label className="active">Title</label>
+      <form className="bookmarkForm collection" onSubmit={this.handleSubmit} style={formStyles}>
+        <div className="collection-item">
+          <h5 className="center-align" style={formHeaderStyles}>Edit Bookmark:</h5>
+          {errorNotification}
+          <div className="row">
+            <div className="input-field s6 col">
+              <input type="text" ref="title" />
+              <label className="active">Title</label>
+            </div>
+            <div className="input-field s6 col">
+              <input type="text" ref="categories" />
+              <label className="active">Categories (comma-separated)</label>
+            </div>
           </div>
-          <div className="input-field s6 col">
-            <input type="text" ref="categories" />
-            <label className="active">Categories (comma-separated)</label>
+          <div className="row">
+            <div className="input-field s12 col">
+              <input type="text" placeholder="http://" ref="url" />
+              <label className="active">URL</label>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="input-field s12 col">
-            <input type="text" placeholder="http://" ref="url" />
-            <label className="active">URL</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="s12 col center-align">
-            <button type="submit" className="waves-effect waves-light btn" style={formButtonStyles}>Update Bookmark</button>
+          <div className="row">
+            <div className="s12 col center-align">
+              <button type="submit" className="waves-effect waves-light btn" style={formButtonStyles}>Update Bookmark</button>
+            </div>
           </div>
         </div>
       </form>
