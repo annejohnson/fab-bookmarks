@@ -20,7 +20,7 @@ var BookmarkList = React.createClass({
         <BookmarkRow url={bookmark.val.url} title={bookmark.val.title} categories={bookmark.val.categories} uid={bookmark.uid} authData={this.props.authData} handleChooseCategory={this.setCategoryFilter} />
       );
     }.bind(this));
-    return (
+    return this.props.authData ? (
       <div className="collection with-header card-panel">
         <div className="collection-header">
           <div className="row">
@@ -35,6 +35,8 @@ var BookmarkList = React.createClass({
         </div>
         {bookmarksHtml}
       </div>
+    ) : (
+      <div></div>
     );
   }
 });

@@ -3,3 +3,7 @@
 body {
   background-color: $primary-color;
 }
+
+$btn-margin-side: 5px;
+.btn-margin-right { margin-right: $btn-margin-side; }
+.btn-margin-left  { margin-left:  $btn-margin-side; }

@@ -3,10 +3,12 @@ var NewSessionForm = React.createClass({
     return { error: null, type: null };
   },
   handleSignupSwitch: function() {
-    this.setState({ type: 'signup', error: null })
+    this.setState({ type: 'signup', error: null });
+    $('#modal-new-session-form').openModal();
   },
   handleLoginSwitch: function() {
-    this.setState({ type: 'login', error: null })
+    this.setState({ type: 'login', error: null });
+    $('#modal-new-session-form').openModal();
   },
   submitLogin: function(email, password) {
     bookmarksDatabase.authWithPassword(
@@ -44,7 +46,7 @@ var NewSessionForm = React.createClass({
       <ErrorNotification message={this.state.error} />
     ) : "";
     var formHeaderText = this.state.type === 'login' ? "Log In" : "Sign Up";
-    var formButtonText = this.state.type === 'login' ? "Log In" : "Sign Up";
+    var formButtonText = formHeaderText;
     var switchTypeHtml = this.state.type === 'login' ? (
       <div>
         New user? <a href="javascript:void(0)" onClick={this.handleSignupSwitch}>Sign up here</a>.
@@ -55,7 +57,7 @@ var NewSessionForm = React.createClass({
       </div>
     );
     var formHtml = (
-      <form className="newSessionForm card-panel collection" onSubmit={this.handleSubmit} style={formStyles}>
+      <form className="newSessionForm card-panel collection modal" id="modal-new-session-form" onSubmit={this.handleSubmit} style={formStyles}>
         <div className="collection-item">
           <h5 className="center-align" style={formHeaderStyles}>{formHeaderText}</h5>
           {errorNotification}
@@ -79,15 +81,20 @@ var NewSessionForm = React.createClass({
       </form>
     );
     var loginOrSignupHtml = (
-      <div>
-        <h5>Hello, Guest! Please log in or sign up to continue.</h5>
-        <a href="javascript:void(0)" className="waves-effect waves-light btn" onClick={this.handleLoginSwitch}>Log In</a>
-        <a href="javascript:void(0)" className="waves-effect waves-light btn" onClick={this.handleSignupSwitch}>Sign Up</a>
+      <div className="row">
+        <div className="s12 m10 offset-m1 col center-align">
+          <div className="card-panel">
+            <h5>Hello, Guest! Please log in or sign up to continue.</h5>
+            <a href="javascript:void(0)" className="waves-effect waves-light btn btn-margin-right" onClick={this.handleLoginSwitch}>Log In</a>
+            <a href="javascript:void(0)" className="waves-effect waves-light btn btn-margin-left" onClick={this.handleSignupSwitch}>Sign Up</a>
+          </div>
+        </div>
       </div>
     );
     return (
       <div>
-        {this.state.type ? formHtml : loginOrSignupHtml}
+        {formHtml}
+        {loginOrSignupHtml}
       </div>
     );
   }

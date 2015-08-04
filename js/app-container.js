@@ -23,6 +23,9 @@ var AppContainer = React.createClass({
       if (authData) {
         this.bindAsObject(bookmarksDatabase.child(authData.uid), 'bookmarksByKey');
         this.setState({ bookmarksByKey: this.state.bookmarksByKey, authData: authData });
+        $('#modal-new-session-form').closeModal();
+      } else {
+        this.setState(this.getInitialState());
       }
     }.bind(this));
   },
